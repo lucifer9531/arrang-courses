@@ -12,6 +12,7 @@
     <modules>
         <module>arrang-courses-common</module>
         <module>arrang-courses-system</module>
+        <module>arrang-courses-enter</module>
     </modules>
 
     <name>自动排课系统后台管理</name>
