@@ -3,13 +3,13 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>arrang-courses</artifactId>
+        <artifactId>arranging-courses</artifactId>
         <groupId>com.lucifer</groupId>
         <version>1.0.0</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>arrang-courses-system</artifactId>
+    <artifactId>arranging-courses-system</artifactId>
     <name>核心模块</name>
 
     <properties>
@@ -19,14 +19,14 @@
     <dependencies>
         <dependency>
             <groupId>com.lucifer</groupId>
-            <artifactId>arrang-courses-common</artifactId>
+            <artifactId>arranging-courses-common</artifactId>
             <version>1.0.0</version>
             <scope>compile</scope>
         </dependency>
 
         <dependency>
             <groupId>com.lucifer</groupId>
-            <artifactId>arrang-courses-enter</artifactId>
+            <artifactId>arranging-courses-enter</artifactId>
             <version>1.0.0</version>
         </dependency>
 

@@ -5,11 +5,11 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.lucifer</groupId>
-        <artifactId>arrang-courses</artifactId>
+        <artifactId>arranging-courses</artifactId>
         <version>1.0.0</version>
     </parent>
 
-    <artifactId>arrang-courses-enter</artifactId>
+    <artifactId>arranging-courses-enter</artifactId>
     <name>录入模块</name>
 
     <properties>

@@ -2,12 +2,10 @@ package com.lucifer.rest;
 
 import com.lucifer.domain.Teacher;
 import com.lucifer.service.TeacherService;
-import com.lucifer.service.dto.TeacherDto;
 import com.lucifer.service.dto.TeacherQueryCriteria;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.java.Log;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
