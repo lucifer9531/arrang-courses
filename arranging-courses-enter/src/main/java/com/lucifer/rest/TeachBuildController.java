@@ -29,14 +29,14 @@ public class TeachBuildController {
     @ApiOperation(value = "查询教学区")
     @GetMapping
     @PreAuthorize("@el.check('teachBuild:list')")
-    public ResponseEntity<Object> queryApp(TeachBuildQueryCriteria criteria, Pageable pageable) {
+    public ResponseEntity<Object> query(TeachBuildQueryCriteria criteria, Pageable pageable) {
         return new ResponseEntity<>(teachBuildService.queryAll(criteria, pageable), HttpStatus.OK);
     }
 
     @ApiOperation(value = "新增教学区")
     @PostMapping
     @PreAuthorize("@el.check('teachBuild:add')")
-    public ResponseEntity<Object> createApp(@Validated @RequestBody TeachBuild resources) {
+    public ResponseEntity<Object> create(@Validated @RequestBody TeachBuild resources) {
         teachBuildService.create(resources);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
@@ -44,7 +44,7 @@ public class TeachBuildController {
     @ApiOperation(value = "修改教学区")
     @PutMapping
     @PreAuthorize("@el.check('teachBuild:edit')")
-    public ResponseEntity<Object> updateApp(@Validated @RequestBody TeachBuild resources) {
+    public ResponseEntity<Object> update(@Validated @RequestBody TeachBuild resources) {
         teachBuildService.update(resources);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
@@ -52,7 +52,7 @@ public class TeachBuildController {
     @ApiOperation(value = "删除教学区")
     @DeleteMapping
     @PreAuthorize("@el.check('teachBuild:del')")
-    public ResponseEntity<Object> deleteApp(@RequestBody Set<Long> ids) {
+    public ResponseEntity<Object> delete(@RequestBody Set<Long> ids) {
         teachBuildService.delete(ids);
         return new ResponseEntity<>(HttpStatus.OK);
     }

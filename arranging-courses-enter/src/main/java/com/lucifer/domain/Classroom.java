@@ -10,6 +10,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 /**
@@ -41,12 +42,13 @@ public class Classroom extends BaseEntity implements Serializable {
     @JoinColumn(name = "teach_build_id")
     private TeachBuild teachBuild;
 
-    @NotBlank
+    @NotNull
     @ApiModelProperty(value = "教室容量")
     private Long capacity;
 
 
     @ApiModelProperty(value = "是否使用")
+    @NotNull
     private Boolean isUsed;
 
     @ApiModelProperty(value = "备注")

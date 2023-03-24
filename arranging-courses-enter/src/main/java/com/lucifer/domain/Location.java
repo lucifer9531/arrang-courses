@@ -2,6 +2,7 @@ package com.lucifer.domain;
 
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.bean.copier.CopyOptions;
+import com.alibaba.fastjson.annotation.JSONField;
 import com.lucifer.base.BaseEntity;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
@@ -9,8 +10,8 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * @author lucifinil
@@ -18,28 +19,31 @@ import java.io.Serializable;
 @Entity
 @Getter
 @Setter
-@Table(name = "enter_class")
-public class Classes extends BaseEntity implements Serializable {
+@Table(name = "enter_location")
+public class Location extends BaseEntity implements Serializable {
 
     @Id
-    @Column(name = "class_id")
+    @Column(name = "location_id")
     @ApiModelProperty(value = "ID", hidden = true)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank
-    @ApiModelProperty(value = "编码")
-    private String classNo;
+    @ApiModelProperty(value = "位置")
+    private String location;
+
+    @ApiModelProperty(value = "教学区", hidden = true)
+    @JSONField(serialize = false)
+    @OneToMany(mappedBy = "location", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<TeachBuild> teachBuildList;
 
     @NotBlank
-    @ApiModelProperty(value = "班级名称")
+    @ApiModelProperty(value = "课程名称")
     private String name;
 
-    @NotNull
-    @ApiModelProperty(value = "容量")
-    private Long volume;
+    @ApiModelProperty(value = "备注")
+    private String marks;
 
-    public void copy(Classes source) {
+    public void copy(Location source) {
         BeanUtil.copyProperties(source, this, CopyOptions.create().setIgnoreNullValue(true));
     }
 }

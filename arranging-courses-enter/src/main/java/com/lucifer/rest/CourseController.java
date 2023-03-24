@@ -29,14 +29,14 @@ public class CourseController {
     @ApiOperation(value = "查询课程")
     @GetMapping
     @PreAuthorize("@el.check('course:list')")
-    public ResponseEntity<Object> queryApp(CourseQueryCriteria criteria, Pageable pageable) {
+    public ResponseEntity<Object> query(CourseQueryCriteria criteria, Pageable pageable) {
         return new ResponseEntity<>(courseService.queryAll(criteria, pageable), HttpStatus.OK);
     }
 
     @ApiOperation(value = "新增课程")
     @PostMapping
     @PreAuthorize("@el.check('course:add')")
-    public ResponseEntity<Object> createApp(@Validated @RequestBody Course resources) {
+    public ResponseEntity<Object> create(@Validated @RequestBody Course resources) {
         courseService.create(resources);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
@@ -44,7 +44,7 @@ public class CourseController {
     @ApiOperation(value = "修改课程")
     @PutMapping
     @PreAuthorize("@el.check('course:edit')")
-    public ResponseEntity<Object> updateApp(@Validated @RequestBody Course resources) {
+    public ResponseEntity<Object> update(@Validated @RequestBody Course resources) {
         courseService.update(resources);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
@@ -52,7 +52,7 @@ public class CourseController {
     @ApiOperation(value = "删除课程")
     @DeleteMapping
     @PreAuthorize("@el.check('course:del')")
-    public ResponseEntity<Object> deleteApp(@RequestBody Set<Long> ids) {
+    public ResponseEntity<Object> delete(@RequestBody Set<Long> ids) {
         courseService.delete(ids);
         return new ResponseEntity<>(HttpStatus.OK);
     }

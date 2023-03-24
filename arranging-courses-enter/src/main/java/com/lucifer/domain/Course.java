@@ -42,6 +42,7 @@ public class Course extends BaseEntity implements Serializable {
     private String publisher;
 
     @ApiModelProperty(value = "课程状态(字典)")
+    @NotBlank
     private String status;
 
     @ApiModelProperty(value = "优先级")

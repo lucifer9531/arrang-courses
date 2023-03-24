@@ -37,8 +37,11 @@ public class TeachBuild extends BaseEntity implements Serializable {
     @ApiModelProperty(value = "教室名称")
     private String name;
 
-    @ApiModelProperty(value = "教学楼位置")
-    private String location;
+    @ApiModelProperty(value = "位置", hidden = true)
+    @JSONField(serialize = false)
+    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.REFRESH}, optional = false)
+    @JoinColumn(name = "location_id")
+    private Location location;
 
     @ApiModelProperty(value = "教室", hidden = true)
     @JSONField(serialize = false)

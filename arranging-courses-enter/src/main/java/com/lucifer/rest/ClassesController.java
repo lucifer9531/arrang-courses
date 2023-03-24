@@ -29,14 +29,14 @@ public class ClassesController {
     @ApiOperation(value = "查询班级")
     @GetMapping
     @PreAuthorize("@el.check('class:list')")
-    public ResponseEntity<Object> queryApp(ClassesQueryCriteria criteria, Pageable pageable) {
+    public ResponseEntity<Object> query(ClassesQueryCriteria criteria, Pageable pageable) {
         return new ResponseEntity<>(classesService.queryAll(criteria, pageable), HttpStatus.OK);
     }
 
     @ApiOperation(value = "新增班级")
     @PostMapping
     @PreAuthorize("@el.check('class:add')")
-    public ResponseEntity<Object> createApp(@Validated @RequestBody Classes resources) {
+    public ResponseEntity<Object> create(@Validated @RequestBody Classes resources) {
         classesService.create(resources);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
@@ -44,7 +44,7 @@ public class ClassesController {
     @ApiOperation(value = "修改班级")
     @PutMapping
     @PreAuthorize("@el.check('class:edit')")
-    public ResponseEntity<Object> updateApp(@Validated @RequestBody Classes resources) {
+    public ResponseEntity<Object> update(@Validated @RequestBody Classes resources) {
         classesService.update(resources);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
@@ -52,7 +52,7 @@ public class ClassesController {
     @ApiOperation(value = "删除班级")
     @DeleteMapping
     @PreAuthorize("@el.check('class:del')")
-    public ResponseEntity<Object> deleteApp(@RequestBody Set<Long> ids) {
+    public ResponseEntity<Object> delete(@RequestBody Set<Long> ids) {
         classesService.delete(ids);
         return new ResponseEntity<>(HttpStatus.OK);
     }
