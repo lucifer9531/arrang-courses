@@ -37,8 +37,8 @@ public class ClassesServiceImpl implements ClassesService {
     @Override
     @Transactional(rollbackFor = Exception.class)
     public void create(Classes resources) {
-        if (classesRepository.findByNumber(resources.getNumber()) != null) {
-            throw new EntityExistException(Classes.class, "number", resources.getNumber());
+        if (classesRepository.findByClassNo(resources.getClassNo()) != null) {
+            throw new EntityExistException(Classes.class, "classNo", resources.getClassNo());
         }
         classesRepository.save(resources);
     }

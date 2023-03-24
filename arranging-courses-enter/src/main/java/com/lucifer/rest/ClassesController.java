@@ -26,14 +26,14 @@ public class ClassesController {
 
     private final ClassesService classesService;
 
-    @ApiOperation(value = "查询教室")
+    @ApiOperation(value = "查询班级")
     @GetMapping
     @PreAuthorize("@el.check('class:list')")
     public ResponseEntity<Object> queryApp(ClassesQueryCriteria criteria, Pageable pageable) {
         return new ResponseEntity<>(classesService.queryAll(criteria, pageable), HttpStatus.OK);
     }
 
-    @ApiOperation(value = "新增教室")
+    @ApiOperation(value = "新增班级")
     @PostMapping
     @PreAuthorize("@el.check('class:add')")
     public ResponseEntity<Object> createApp(@Validated @RequestBody Classes resources) {
@@ -41,7 +41,7 @@ public class ClassesController {
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
-    @ApiOperation(value = "修改教室")
+    @ApiOperation(value = "修改班级")
     @PutMapping
     @PreAuthorize("@el.check('class:edit')")
     public ResponseEntity<Object> updateApp(@Validated @RequestBody Classes resources) {
@@ -49,7 +49,7 @@ public class ClassesController {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
-    @ApiOperation(value = "删除教室")
+    @ApiOperation(value = "删除班级")
     @DeleteMapping
     @PreAuthorize("@el.check('class:del')")
     public ResponseEntity<Object> deleteApp(@RequestBody Set<Long> ids) {

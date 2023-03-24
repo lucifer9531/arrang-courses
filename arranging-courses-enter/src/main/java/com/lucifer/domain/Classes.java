@@ -28,7 +28,7 @@ public class Classes extends BaseEntity implements Serializable {
 
     @NotBlank
     @ApiModelProperty(value = "编码")
-    private String number;
+    private String classNo;
 
     @NotBlank
     @ApiModelProperty(value = "班级名称")

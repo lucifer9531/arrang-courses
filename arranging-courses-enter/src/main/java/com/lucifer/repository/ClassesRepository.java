@@ -10,8 +10,8 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 public interface ClassesRepository extends JpaRepository<Classes, Long>, JpaSpecificationExecutor<Classes> {
     /**
      * 根据code查询
-     * @param code
+     * @param classNo
      * @return
      */
-    Classes findByNumber(String code);
+    Classes findByClassNo(String classNo);
 }

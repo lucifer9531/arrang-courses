@@ -10,13 +10,13 @@ import java.util.List;
  * @author lucifer
  */
 @Data
-public class ClassesQueryCriteria {
+public class TeachBuildQueryCriteria {
 
     /**
      * 模糊
      */
     @Query(type = Query.Type.INNER_LIKE)
-    private String classNo;
+    private String name;
 
     @Query(type = Query.Type.BETWEEN)
     private List<Timestamp> createTime;

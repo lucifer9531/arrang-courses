@@ -2,6 +2,7 @@ package com.lucifer.domain;
 
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.bean.copier.CopyOptions;
+import com.alibaba.fastjson.annotation.JSONField;
 import com.lucifer.base.BaseEntity;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
@@ -10,6 +11,7 @@ import lombok.Setter;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * @author lucifer
@@ -17,46 +19,36 @@ import java.io.Serializable;
 @Entity
 @Getter
 @Setter
-@Table(name = "enter_course")
-public class Course extends BaseEntity implements Serializable {
+@Table(name = "enter_teach_build")
+public class TeachBuild extends BaseEntity implements Serializable {
+
 
     @Id
-    @Column(name = "course_id")
+    @Column(name = "teach_build_id")
     @ApiModelProperty(value = "ID", hidden = true)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @NotBlank
     @ApiModelProperty(value = "编号")
-    private String courseNo;
+    private String teachBuildNo;
 
     @NotBlank
-    @ApiModelProperty(value = "类型")
-    private String type;
-
-    @NotBlank
-    @ApiModelProperty(value = "课程名称")
+    @ApiModelProperty(value = "教室名称")
     private String name;
 
-    @ApiModelProperty(value = "出版社")
-    private String publisher;
+    @ApiModelProperty(value = "教学楼位置")
+    private String location;
 
-    @ApiModelProperty(value = "课程状态(字典)")
-    private String status;
-
-    @ApiModelProperty(value = "优先级")
-    private Integer level;
-
-    @ApiModelProperty(value = "学时")
-    private Long hour;
-
-    @ApiModelProperty(value = "学分")
-    private Long credit;
+    @ApiModelProperty(value = "教室", hidden = true)
+    @JSONField(serialize = false)
+    @OneToMany(mappedBy = "teachBuild", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+     private List<Classroom> classroom;
 
     @ApiModelProperty(value = "备注")
     private String marks;
 
-    public void copy(Course source) {
+    public void copy(TeachBuild source) {
         BeanUtil.copyProperties(source, this, CopyOptions.create().setIgnoreNullValue(true));
     }
 }

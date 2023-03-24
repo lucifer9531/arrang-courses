@@ -2,6 +2,7 @@ package com.lucifer.domain;
 
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.bean.copier.CopyOptions;
+import com.alibaba.fastjson.annotation.JSONField;
 import com.lucifer.base.BaseEntity;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
@@ -17,46 +18,41 @@ import java.io.Serializable;
 @Entity
 @Getter
 @Setter
-@Table(name = "enter_course")
-public class Course extends BaseEntity implements Serializable {
+@Table(name = "enter_classroom")
+public class Classroom extends BaseEntity implements Serializable {
 
     @Id
-    @Column(name = "course_id")
+    @Column(name = "classroom_id")
     @ApiModelProperty(value = "ID", hidden = true)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @NotBlank
     @ApiModelProperty(value = "编号")
-    private String courseNo;
+    private String classroomNo;
 
     @NotBlank
-    @ApiModelProperty(value = "类型")
-    private String type;
-
-    @NotBlank
-    @ApiModelProperty(value = "课程名称")
+    @ApiModelProperty(value = "教室名称")
     private String name;
 
-    @ApiModelProperty(value = "出版社")
-    private String publisher;
+    @ApiModelProperty(value = "所属教学楼", hidden = true)
+    @JSONField(serialize = false)
+    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.REFRESH}, optional = false)
+    @JoinColumn(name = "teach_build_id")
+    private TeachBuild teachBuild;
 
-    @ApiModelProperty(value = "课程状态(字典)")
-    private String status;
+    @NotBlank
+    @ApiModelProperty(value = "教室容量")
+    private Long capacity;
 
-    @ApiModelProperty(value = "优先级")
-    private Integer level;
 
-    @ApiModelProperty(value = "学时")
-    private Long hour;
-
-    @ApiModelProperty(value = "学分")
-    private Long credit;
+    @ApiModelProperty(value = "是否使用")
+    private Boolean isUsed;
 
     @ApiModelProperty(value = "备注")
     private String marks;
 
-    public void copy(Course source) {
+    public void copy(Classroom source) {
         BeanUtil.copyProperties(source, this, CopyOptions.create().setIgnoreNullValue(true));
     }
 }
