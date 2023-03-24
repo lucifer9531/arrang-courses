@@ -11,13 +11,25 @@ import java.io.Serializable;
  */
 @Getter
 @Setter
-public class ClassesDto extends BaseDTO implements Serializable {
+public class CourseDto extends BaseDTO implements Serializable {
 
     private Long id;
 
     private String number;
 
-    private Long volume;
+    private String type;
 
     private String name;
+
+    private String publisher;
+
+    private String status;
+
+    private Integer level;
+
+    private Long hour;
+
+    private Long credit;
+
+    private String marks;
 }

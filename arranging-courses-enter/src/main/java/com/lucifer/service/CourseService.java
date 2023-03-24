@@ -1,7 +1,7 @@
 package com.lucifer.service;
 
-import com.lucifer.domain.Teacher;
-import com.lucifer.service.dto.TeacherQueryCriteria;
+import com.lucifer.domain.Course;
+import com.lucifer.service.dto.CourseQueryCriteria;
 import org.springframework.data.domain.Pageable;
 
 import java.util.Set;
@@ -9,29 +9,29 @@ import java.util.Set;
 /**
  * @author lucifer
  */
-public interface TeacherService {
+public interface CourseService {
     /**
-     * 全部查询教师
+     * 全部查询课程
      * @param criteria
      * @param pageable
      * @return
      */
-    Object queryAll(TeacherQueryCriteria criteria, Pageable pageable);
+    Object queryAll(CourseQueryCriteria criteria, Pageable pageable);
 
     /**
-     * 创建教师
+     * 创建课程
      * @param resources
      */
-    void create(Teacher resources);
+    void create(Course resources);
 
     /**
-     * 修改教师
+     * 修改课程
      * @param resources
      */
-    void update(Teacher resources);
+    void update(Course resources);
 
     /**
-     * 删除教师
+     * 删除课程
      * @param ids
      */
     void delete(Set<Long> ids);

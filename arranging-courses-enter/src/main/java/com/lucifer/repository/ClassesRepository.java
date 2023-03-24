@@ -13,5 +13,5 @@ public interface ClassesRepository extends JpaRepository<Classes, Long>, JpaSpec
      * @param code
      * @return
      */
-    Classes findByCode(String code);
+    Classes findByNumber(String code);
 }

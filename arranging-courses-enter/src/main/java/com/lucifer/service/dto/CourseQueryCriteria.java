@@ -10,7 +10,7 @@ import java.util.List;
  * @author lucifer
  */
 @Data
-public class TeacherQueryCriteria {
+public class CourseQueryCriteria {
 
     /**
      * 模糊

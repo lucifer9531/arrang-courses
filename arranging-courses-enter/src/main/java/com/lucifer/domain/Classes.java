@@ -28,16 +28,15 @@ public class Classes extends BaseEntity implements Serializable {
 
     @NotBlank
     @ApiModelProperty(value = "编码")
-    private String code;
+    private String number;
 
-    @ApiModelProperty(value = "是否占用")
-    private Boolean isUsed = false;
+    @NotBlank
+    @ApiModelProperty(value = "班级名称")
+    private String name;
 
+    @NotBlank
     @ApiModelProperty(value = "容量")
     private Long volume;
-
-    @ApiModelProperty(value = "位置")
-    private String position;
 
     public void copy(Classes source) {
         BeanUtil.copyProperties(source, this, CopyOptions.create().setIgnoreNullValue(true));

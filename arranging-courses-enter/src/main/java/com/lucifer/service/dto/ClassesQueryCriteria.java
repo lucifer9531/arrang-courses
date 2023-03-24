@@ -16,7 +16,7 @@ public class ClassesQueryCriteria {
      * 模糊
      */
     @Query(type = Query.Type.INNER_LIKE)
-    private String code;
+    private String number;
 
     @Query(type = Query.Type.BETWEEN)
     private List<Timestamp> createTime;
