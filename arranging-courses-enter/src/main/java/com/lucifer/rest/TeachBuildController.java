@@ -33,6 +33,13 @@ public class TeachBuildController {
         return new ResponseEntity<>(teachBuildService.queryAll(criteria, pageable), HttpStatus.OK);
     }
 
+    @ApiOperation("返回全部教学区")
+    @GetMapping(value = "/all")
+    @PreAuthorize("@el.check('teachBuild:list','classroom:add','classroom:edit')")
+    public ResponseEntity<Object> queryAll(){
+        return new ResponseEntity<>(teachBuildService.queryAll(),HttpStatus.OK);
+    }
+
     @ApiOperation(value = "新增教学区")
     @PostMapping
     @PreAuthorize("@el.check('teachBuild:add')")

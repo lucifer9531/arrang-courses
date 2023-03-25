@@ -31,5 +31,5 @@ public class CourseDto extends BaseDTO implements Serializable {
 
     private Long credit;
 
-    private String marks;
+    private String remarks;
 }

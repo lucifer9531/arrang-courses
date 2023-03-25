@@ -3,6 +3,7 @@ package com.lucifer.service.impl;
 import com.lucifer.domain.Location;
 import com.lucifer.repository.LocationRepository;
 import com.lucifer.service.LocationService;
+import com.lucifer.service.dto.LocationDto;
 import com.lucifer.service.dto.LocationQueryCriteria;
 import com.lucifer.service.mapstruct.LocationMapper;
 import com.lucifer.utils.PageUtil;
@@ -14,6 +15,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -31,6 +33,11 @@ public class LocationServiceImpl implements LocationService {
     public Object queryAll(LocationQueryCriteria criteria, Pageable pageable) {
         Page<Location> page = locationRepository.findAll((root, criteriaQuery, criteriaBuilder) -> QueryHelp.getPredicate(root, criteria, criteriaBuilder), pageable);
         return PageUtil.toPage(page.map(locationMapper::toDto));
+    }
+
+    @Override
+    public List<LocationDto> queryAll() {
+        return locationMapper.toDto(locationRepository.findAll());
     }
 
     @Override

@@ -34,7 +34,7 @@ public class TeachBuild extends BaseEntity implements Serializable {
     private String teachBuildNo;
 
     @NotBlank
-    @ApiModelProperty(value = "教室名称")
+    @ApiModelProperty(value = "教学区名称")
     private String name;
 
     @ApiModelProperty(value = "位置", hidden = true)
@@ -49,7 +49,7 @@ public class TeachBuild extends BaseEntity implements Serializable {
      private List<Classroom> classroom;
 
     @ApiModelProperty(value = "备注")
-    private String marks;
+    private String remarks;
 
     public void copy(TeachBuild source) {
         BeanUtil.copyProperties(source, this, CopyOptions.create().setIgnoreNullValue(true));

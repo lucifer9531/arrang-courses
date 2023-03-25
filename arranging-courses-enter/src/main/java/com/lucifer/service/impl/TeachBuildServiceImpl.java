@@ -1,14 +1,10 @@
 package com.lucifer.service.impl;
 
-import com.lucifer.domain.Classroom;
 import com.lucifer.domain.TeachBuild;
-import com.lucifer.repository.ClassRoomRepository;
 import com.lucifer.repository.TeachBuildRepository;
-import com.lucifer.service.ClassroomService;
 import com.lucifer.service.TeachBuildService;
-import com.lucifer.service.dto.ClassroomQueryCriteria;
+import com.lucifer.service.dto.TeachBuildDto;
 import com.lucifer.service.dto.TeachBuildQueryCriteria;
-import com.lucifer.service.mapstruct.ClassroomMapper;
 import com.lucifer.service.mapstruct.TeachBuildMapper;
 import com.lucifer.utils.PageUtil;
 import com.lucifer.utils.QueryHelp;
@@ -19,6 +15,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -36,6 +33,11 @@ public class TeachBuildServiceImpl implements TeachBuildService {
     public Object queryAll(TeachBuildQueryCriteria criteria, Pageable pageable) {
         Page<TeachBuild> page = teachBuildRepository.findAll((root, criteriaQuery, criteriaBuilder) -> QueryHelp.getPredicate(root, criteria, criteriaBuilder), pageable);
         return PageUtil.toPage(page.map(teachBuildMapper::toDto));
+    }
+
+    @Override
+    public List<TeachBuildDto> queryAll() {
+        return teachBuildMapper.toDto(teachBuildRepository.findAll());
     }
 
     @Override

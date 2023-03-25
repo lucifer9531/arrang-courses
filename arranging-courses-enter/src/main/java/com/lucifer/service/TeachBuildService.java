@@ -1,9 +1,11 @@
 package com.lucifer.service;
 
 import com.lucifer.domain.TeachBuild;
+import com.lucifer.service.dto.TeachBuildDto;
 import com.lucifer.service.dto.TeachBuildQueryCriteria;
 import org.springframework.data.domain.Pageable;
 
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -35,4 +37,10 @@ public interface TeachBuildService {
      * @param ids
      */
     void delete(Set<Long> ids);
+
+    /**
+     * 查询全部教学区
+     * @return
+     */
+    List<TeachBuildDto> queryAll();
 }

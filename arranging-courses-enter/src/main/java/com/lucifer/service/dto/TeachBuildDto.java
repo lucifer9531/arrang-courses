@@ -26,5 +26,5 @@ public class TeachBuildDto extends BaseDTO implements Serializable {
 
     private List<Classroom> classroom;
 
-    private String marks;
+    private String remarks;
 }

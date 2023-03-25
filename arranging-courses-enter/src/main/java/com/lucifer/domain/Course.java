@@ -55,7 +55,7 @@ public class Course extends BaseEntity implements Serializable {
     private Long credit;
 
     @ApiModelProperty(value = "备注")
-    private String marks;
+    private String remarks;
 
     public void copy(Course source) {
         BeanUtil.copyProperties(source, this, CopyOptions.create().setIgnoreNullValue(true));

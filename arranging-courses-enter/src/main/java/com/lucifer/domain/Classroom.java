@@ -52,7 +52,7 @@ public class Classroom extends BaseEntity implements Serializable {
     private Boolean isUsed;
 
     @ApiModelProperty(value = "备注")
-    private String marks;
+    private String remarks;
 
     public void copy(Classroom source) {
         BeanUtil.copyProperties(source, this, CopyOptions.create().setIgnoreNullValue(true));

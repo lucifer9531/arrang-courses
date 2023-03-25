@@ -1,9 +1,11 @@
 package com.lucifer.service;
 
 import com.lucifer.domain.Location;
+import com.lucifer.service.dto.LocationDto;
 import com.lucifer.service.dto.LocationQueryCriteria;
 import org.springframework.data.domain.Pageable;
 
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -35,4 +37,10 @@ public interface LocationService {
      * @param ids
      */
     void delete(Set<Long> ids);
+
+    /**
+     * 查询全部位置
+     * @return
+     */
+    List<LocationDto> queryAll();
 }

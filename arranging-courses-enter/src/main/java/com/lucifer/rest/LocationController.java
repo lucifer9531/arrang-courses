@@ -1,10 +1,7 @@
 package com.lucifer.rest;
 
-import com.lucifer.domain.Grade;
 import com.lucifer.domain.Location;
-import com.lucifer.service.GradeService;
 import com.lucifer.service.LocationService;
-import com.lucifer.service.dto.GradeQueryCriteria;
 import com.lucifer.service.dto.LocationQueryCriteria;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -34,6 +31,13 @@ public class LocationController {
     @PreAuthorize("@el.check('location:list')")
     public ResponseEntity<Object> query(LocationQueryCriteria criteria, Pageable pageable) {
         return new ResponseEntity<>(locationService.queryAll(criteria, pageable), HttpStatus.OK);
+    }
+
+    @ApiOperation("返回全部位置")
+    @GetMapping(value = "/all")
+    @PreAuthorize("@el.check('location:list','teachBuild:add','teachBuild:edit')")
+    public ResponseEntity<Object> queryAllRole(){
+        return new ResponseEntity<>(locationService.queryAll(),HttpStatus.OK);
     }
 
     @ApiOperation(value = "新增位置")

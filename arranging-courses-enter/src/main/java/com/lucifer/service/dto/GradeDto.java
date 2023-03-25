@@ -1,7 +1,6 @@
 package com.lucifer.service.dto;
 
 import com.lucifer.base.BaseDTO;
-import com.lucifer.domain.TeachBuild;
 import lombok.Getter;
 import lombok.Setter;
 

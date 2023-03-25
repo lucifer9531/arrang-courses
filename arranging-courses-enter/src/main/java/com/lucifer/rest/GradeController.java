@@ -1,10 +1,7 @@
 package com.lucifer.rest;
 
-import com.lucifer.domain.Classes;
 import com.lucifer.domain.Grade;
-import com.lucifer.service.ClassesService;
 import com.lucifer.service.GradeService;
-import com.lucifer.service.dto.ClassesQueryCriteria;
 import com.lucifer.service.dto.GradeQueryCriteria;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
