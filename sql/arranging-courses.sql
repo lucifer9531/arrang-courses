@@ -11,7 +11,7 @@
  Target Server Version : 50735 (5.7.35)
  File Encoding         : 65001
 
- Date: 24/03/2023 21:59:24
+ Date: 25/03/2023 21:20:47
 */
 
 SET NAMES utf8mb4;
@@ -32,14 +32,13 @@ CREATE TABLE `enter_class` (
   `create_time` datetime DEFAULT NULL COMMENT '创建日期',
   `update_time` datetime DEFAULT NULL COMMENT '更新日期',
   PRIMARY KEY (`class_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COMMENT='教室表';
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COMMENT='教室表';
 
 -- ----------------------------
 -- Records of enter_class
 -- ----------------------------
 BEGIN;
-INSERT INTO `enter_class` (`class_id`, `class_no`, `name`, `volume`, `user_id`, `create_by`, `update_by`, `create_time`, `update_time`) VALUES (5, '6546', '0', 656, 1, 'admin', 'admin', '2023-03-22 13:37:36', '2023-03-22 13:37:36');
-INSERT INTO `enter_class` (`class_id`, `class_no`, `name`, `volume`, `user_id`, `create_by`, `update_by`, `create_time`, `update_time`) VALUES (6, '434', '1', 0, 1, 'admin', 'admin', '2023-03-22 13:43:42', '2023-03-22 13:43:42');
+INSERT INTO `enter_class` (`class_id`, `class_no`, `name`, `volume`, `user_id`, `create_by`, `update_by`, `create_time`, `update_time`) VALUES (7, 'Class-1', '大一', 100, NULL, 'admin', 'admin', '2023-03-25 10:25:50', '2023-03-25 10:25:50');
 COMMIT;
 
 -- ----------------------------
@@ -59,12 +58,13 @@ CREATE TABLE `enter_classroom` (
   `create_time` datetime DEFAULT NULL COMMENT '创建时间',
   `update_time` datetime DEFAULT NULL COMMENT '更新时间',
   PRIMARY KEY (`classroom_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of enter_classroom
 -- ----------------------------
 BEGIN;
+INSERT INTO `enter_classroom` (`classroom_id`, `classroom_no`, `name`, `teach_build_id`, `capacity`, `is_used`, `remarks`, `create_by`, `update_by`, `create_time`, `update_time`) VALUES (1, 'qq', '535', 2, 999, b'0', '424', 'admin', 'admin', '2023-03-25 21:02:31', '2023-03-25 21:02:31');
 COMMIT;
 
 -- ----------------------------
@@ -87,13 +87,14 @@ CREATE TABLE `enter_course` (
   `create_time` datetime DEFAULT NULL COMMENT '创建时间',
   `update_time` datetime DEFAULT NULL COMMENT '更新时间',
   PRIMARY KEY (`course_id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of enter_course
 -- ----------------------------
 BEGIN;
-INSERT INTO `enter_course` (`course_id`, `course_no`, `type`, `name`, `publisher`, `status`, `level`, `hour`, `remarks`, `credit`, `create_by`, `update_by`, `create_time`, `update_time`) VALUES (2, '222', 'elective', '444', NULL, '', NULL, 0, NULL, 0, 'admin', 'admin', '2023-03-22 21:52:54', '2023-03-22 21:54:32');
+INSERT INTO `enter_course` (`course_id`, `course_no`, `type`, `name`, `publisher`, `status`, `level`, `hour`, `remarks`, `credit`, `create_by`, `update_by`, `create_time`, `update_time`) VALUES (3, 'C-1', 'public', '发发发', '锐35', 'noStart', 4, 44, '44', 12, 'admin', 'admin', '2023-03-25 10:56:44', '2023-03-25 10:56:44');
+INSERT INTO `enter_course` (`course_id`, `course_no`, `type`, `name`, `publisher`, `status`, `level`, `hour`, `remarks`, `credit`, `create_by`, `update_by`, `create_time`, `update_time`) VALUES (4, '444', 'public', '444', '44', 'noStart', 55, 60, '555', 60, 'admin', 'admin', '2023-03-25 11:02:21', '2023-03-25 11:02:21');
 COMMIT;
 
 -- ----------------------------
@@ -131,12 +132,14 @@ CREATE TABLE `enter_location` (
   `create_time` datetime DEFAULT NULL COMMENT '创建时间',
   `update_time` datetime DEFAULT NULL COMMENT '更新时间',
   PRIMARY KEY (`location_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of enter_location
 -- ----------------------------
 BEGIN;
+INSERT INTO `enter_location` (`location_id`, `name`, `remarks`, `create_by`, `update_by`, `create_time`, `update_time`) VALUES (1, '大哥', '2222', 'admin', 'admin', '2023-03-25 17:46:12', '2023-03-25 17:46:34');
+INSERT INTO `enter_location` (`location_id`, `name`, `remarks`, `create_by`, `update_by`, `create_time`, `update_time`) VALUES (2, '53563', '354', 'admin', 'admin', '2023-03-25 18:05:43', '2023-03-25 18:05:43');
 COMMIT;
 
 -- ----------------------------
@@ -154,12 +157,15 @@ CREATE TABLE `enter_teach_build` (
   `create_time` datetime DEFAULT NULL COMMENT '创建时间',
   `update_time` datetime DEFAULT NULL COMMENT '更新时间',
   PRIMARY KEY (`teach_build_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of enter_teach_build
 -- ----------------------------
 BEGIN;
+INSERT INTO `enter_teach_build` (`teach_build_id`, `teach_build_no`, `location_id`, `name`, `remarks`, `create_by`, `update_by`, `create_time`, `update_time`) VALUES (1, '444', 1, '666', '333', 'admin', 'admin', '2023-03-25 18:15:03', '2023-03-25 18:15:03');
+INSERT INTO `enter_teach_build` (`teach_build_id`, `teach_build_no`, `location_id`, `name`, `remarks`, `create_by`, `update_by`, `create_time`, `update_time`) VALUES (2, '555', 1, '55', '', 'admin', 'admin', '2023-03-25 18:17:04', '2023-03-25 18:17:04');
+INSERT INTO `enter_teach_build` (`teach_build_id`, `teach_build_no`, `location_id`, `name`, `remarks`, `create_by`, `update_by`, `create_time`, `update_time`) VALUES (3, '111', 2, '455', '', 'admin', 'admin', '2023-03-25 18:20:15', '2023-03-25 18:20:15');
 COMMIT;
 
 -- ----------------------------
@@ -175,15 +181,16 @@ CREATE TABLE `sys_dict` (
   `create_time` datetime DEFAULT NULL COMMENT '创建日期',
   `update_time` datetime DEFAULT NULL COMMENT '更新时间',
   PRIMARY KEY (`dict_id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT COMMENT='数据字典';
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT COMMENT='数据字典';
 
 -- ----------------------------
 -- Records of sys_dict
 -- ----------------------------
 BEGIN;
 INSERT INTO `sys_dict` (`dict_id`, `name`, `description`, `create_by`, `update_by`, `create_time`, `update_time`) VALUES (1, 'user_status', '用户状态', NULL, NULL, '2023-03-03 11:15:49', NULL);
-INSERT INTO `sys_dict` (`dict_id`, `name`, `description`, `create_by`, `update_by`, `create_time`, `update_time`) VALUES (2, 'class_status', '教室状态', 'admin', 'admin', '2023-03-22 13:13:23', '2023-03-22 13:13:23');
+INSERT INTO `sys_dict` (`dict_id`, `name`, `description`, `create_by`, `update_by`, `create_time`, `update_time`) VALUES (2, 'classroom_status', '教室状态', 'admin', 'admin', '2023-03-22 13:13:23', '2023-03-25 11:12:09');
 INSERT INTO `sys_dict` (`dict_id`, `name`, `description`, `create_by`, `update_by`, `create_time`, `update_time`) VALUES (3, 'course_type', '课程类型', 'admin', 'admin', '2023-03-22 21:34:04', '2023-03-22 21:34:04');
+INSERT INTO `sys_dict` (`dict_id`, `name`, `description`, `create_by`, `update_by`, `create_time`, `update_time`) VALUES (4, 'course_status', '课程状态', 'admin', 'admin', '2023-03-25 10:48:44', '2023-03-25 10:48:44');
 COMMIT;
 
 -- ----------------------------
@@ -202,7 +209,7 @@ CREATE TABLE `sys_dict_detail` (
   `update_time` datetime DEFAULT NULL COMMENT '更新时间',
   PRIMARY KEY (`detail_id`) USING BTREE,
   KEY `FK5tpkputc6d9nboxojdbgnpmyb` (`dict_id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT COMMENT='数据字典详情';
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT COMMENT='数据字典详情';
 
 -- ----------------------------
 -- Records of sys_dict_detail
@@ -215,6 +222,9 @@ INSERT INTO `sys_dict_detail` (`detail_id`, `dict_id`, `label`, `value`, `dict_s
 INSERT INTO `sys_dict_detail` (`detail_id`, `dict_id`, `label`, `value`, `dict_sort`, `create_by`, `update_by`, `create_time`, `update_time`) VALUES (5, 3, '公共课', 'public', 1, 'admin', 'admin', '2023-03-22 21:34:44', '2023-03-22 21:34:50');
 INSERT INTO `sys_dict_detail` (`detail_id`, `dict_id`, `label`, `value`, `dict_sort`, `create_by`, `update_by`, `create_time`, `update_time`) VALUES (6, 3, '专业课', 'major', 2, 'admin', 'admin', '2023-03-22 21:35:46', '2023-03-22 21:35:46');
 INSERT INTO `sys_dict_detail` (`detail_id`, `dict_id`, `label`, `value`, `dict_sort`, `create_by`, `update_by`, `create_time`, `update_time`) VALUES (7, 3, '选修课', 'elective', 3, 'admin', 'admin', '2023-03-22 21:36:30', '2023-03-22 21:36:38');
+INSERT INTO `sys_dict_detail` (`detail_id`, `dict_id`, `label`, `value`, `dict_sort`, `create_by`, `update_by`, `create_time`, `update_time`) VALUES (8, 4, '未开始', 'noStart', 1, 'admin', 'admin', '2023-03-25 10:49:50', '2023-03-25 10:49:50');
+INSERT INTO `sys_dict_detail` (`detail_id`, `dict_id`, `label`, `value`, `dict_sort`, `create_by`, `update_by`, `create_time`, `update_time`) VALUES (9, 4, '进行中', 'inProcess', 2, 'admin', 'admin', '2023-03-25 10:50:25', '2023-03-25 10:50:25');
+INSERT INTO `sys_dict_detail` (`detail_id`, `dict_id`, `label`, `value`, `dict_sort`, `create_by`, `update_by`, `create_time`, `update_time`) VALUES (10, 4, '已结束', 'completed', 3, 'admin', 'admin', '2023-03-25 10:51:03', '2023-03-25 10:51:03');
 COMMIT;
 
 -- ----------------------------
@@ -244,7 +254,7 @@ CREATE TABLE `sys_menu` (
   UNIQUE KEY `uniq_title` (`title`),
   UNIQUE KEY `uniq_name` (`name`),
   KEY `inx_pid` (`pid`)
-) ENGINE=InnoDB AUTO_INCREMENT=80 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT COMMENT='系统菜单';
+) ENGINE=InnoDB AUTO_INCREMENT=113 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT COMMENT='系统菜单';
 
 -- ----------------------------
 -- Records of sys_menu
@@ -267,19 +277,27 @@ INSERT INTO `sys_menu` (`menu_id`, `pid`, `sub_count`, `type`, `title`, `name`, 
 INSERT INTO `sys_menu` (`menu_id`, `pid`, `sub_count`, `type`, `title`, `name`, `component`, `menu_sort`, `icon`, `path`, `i_frame`, `cache`, `hidden`, `permission`, `create_by`, `update_by`, `create_time`, `update_time`) VALUES (64, 39, 0, 2, '字典新增', NULL, '', 2, '', '', b'0', b'0', b'0', 'dict:add', NULL, NULL, '2023-03-03 11:15:49', NULL);
 INSERT INTO `sys_menu` (`menu_id`, `pid`, `sub_count`, `type`, `title`, `name`, `component`, `menu_sort`, `icon`, `path`, `i_frame`, `cache`, `hidden`, `permission`, `create_by`, `update_by`, `create_time`, `update_time`) VALUES (65, 39, 0, 2, '字典编辑', NULL, '', 3, '', '', b'0', b'0', b'0', 'dict:edit', NULL, NULL, '2023-03-03 11:15:49', NULL);
 INSERT INTO `sys_menu` (`menu_id`, `pid`, `sub_count`, `type`, `title`, `name`, `component`, `menu_sort`, `icon`, `path`, `i_frame`, `cache`, `hidden`, `permission`, `create_by`, `update_by`, `create_time`, `update_time`) VALUES (66, 39, 0, 2, '字典删除', NULL, '', 4, '', '', b'0', b'0', b'0', 'dict:del', NULL, NULL, '2023-03-03 11:15:49', NULL);
-INSERT INTO `sys_menu` (`menu_id`, `pid`, `sub_count`, `type`, `title`, `name`, `component`, `menu_sort`, `icon`, `path`, `i_frame`, `cache`, `hidden`, `permission`, `create_by`, `update_by`, `create_time`, `update_time`) VALUES (67, NULL, 3, 0, '录入管理', NULL, NULL, 1, 'codeConsole', 'enter', b'0', b'0', b'0', NULL, 'admin', 'admin', '2023-03-22 12:35:39', '2023-03-22 12:36:12');
-INSERT INTO `sys_menu` (`menu_id`, `pid`, `sub_count`, `type`, `title`, `name`, `component`, `menu_sort`, `icon`, `path`, `i_frame`, `cache`, `hidden`, `permission`, `create_by`, `update_by`, `create_time`, `update_time`) VALUES (68, 67, 3, 1, '教师管理', 'Teacher', 'enter/teacher/index', 1, 'skill', 'teacher', b'0', b'0', b'0', 'teacher:list', 'admin', 'admin', '2023-03-22 12:38:38', '2023-03-22 12:38:38');
-INSERT INTO `sys_menu` (`menu_id`, `pid`, `sub_count`, `type`, `title`, `name`, `component`, `menu_sort`, `icon`, `path`, `i_frame`, `cache`, `hidden`, `permission`, `create_by`, `update_by`, `create_time`, `update_time`) VALUES (69, 68, 0, 2, '教师新增', NULL, NULL, 1, NULL, NULL, b'0', b'0', b'0', 'teacher:add', 'admin', 'admin', '2023-03-22 12:40:53', '2023-03-22 12:40:53');
-INSERT INTO `sys_menu` (`menu_id`, `pid`, `sub_count`, `type`, `title`, `name`, `component`, `menu_sort`, `icon`, `path`, `i_frame`, `cache`, `hidden`, `permission`, `create_by`, `update_by`, `create_time`, `update_time`) VALUES (70, 68, 0, 2, '教师编辑', NULL, NULL, 2, NULL, NULL, b'0', b'0', b'0', 'teacher:edit', 'admin', 'admin', '2023-03-22 12:41:24', '2023-03-22 12:41:24');
-INSERT INTO `sys_menu` (`menu_id`, `pid`, `sub_count`, `type`, `title`, `name`, `component`, `menu_sort`, `icon`, `path`, `i_frame`, `cache`, `hidden`, `permission`, `create_by`, `update_by`, `create_time`, `update_time`) VALUES (71, 68, 0, 2, '教师删除', NULL, NULL, 3, NULL, NULL, b'0', b'0', b'0', 'teacher:del', 'admin', 'admin', '2023-03-22 12:41:50', '2023-03-22 12:41:50');
-INSERT INTO `sys_menu` (`menu_id`, `pid`, `sub_count`, `type`, `title`, `name`, `component`, `menu_sort`, `icon`, `path`, `i_frame`, `cache`, `hidden`, `permission`, `create_by`, `update_by`, `create_time`, `update_time`) VALUES (72, 67, 3, 1, '班级管理', 'Classes', 'enter/classes/index', 999, 'email', 'classes', b'0', b'0', b'0', 'class:list', 'admin', 'admin', '2023-03-22 12:44:06', '2023-03-22 12:44:06');
-INSERT INTO `sys_menu` (`menu_id`, `pid`, `sub_count`, `type`, `title`, `name`, `component`, `menu_sort`, `icon`, `path`, `i_frame`, `cache`, `hidden`, `permission`, `create_by`, `update_by`, `create_time`, `update_time`) VALUES (73, 72, 0, 2, '班级新增', NULL, NULL, 1, NULL, NULL, b'0', b'0', b'0', 'class:add', 'admin', 'admin', '2023-03-22 12:44:43', '2023-03-22 12:44:43');
-INSERT INTO `sys_menu` (`menu_id`, `pid`, `sub_count`, `type`, `title`, `name`, `component`, `menu_sort`, `icon`, `path`, `i_frame`, `cache`, `hidden`, `permission`, `create_by`, `update_by`, `create_time`, `update_time`) VALUES (74, 72, 0, 2, '班级编辑', NULL, NULL, 2, NULL, NULL, b'0', b'0', b'0', 'class:edit', 'admin', 'admin', '2023-03-22 12:45:08', '2023-03-22 12:45:08');
-INSERT INTO `sys_menu` (`menu_id`, `pid`, `sub_count`, `type`, `title`, `name`, `component`, `menu_sort`, `icon`, `path`, `i_frame`, `cache`, `hidden`, `permission`, `create_by`, `update_by`, `create_time`, `update_time`) VALUES (75, 72, 0, 2, '班级删除', NULL, NULL, 3, NULL, NULL, b'0', b'0', b'0', 'class:del', 'admin', 'admin', '2023-03-22 12:45:36', '2023-03-22 12:45:36');
-INSERT INTO `sys_menu` (`menu_id`, `pid`, `sub_count`, `type`, `title`, `name`, `component`, `menu_sort`, `icon`, `path`, `i_frame`, `cache`, `hidden`, `permission`, `create_by`, `update_by`, `create_time`, `update_time`) VALUES (76, 67, 3, 1, '课程管理', 'Course', 'enter/course/index', 3, 'source', 'course', b'0', b'0', b'0', 'course:list', 'admin', 'admin', '2023-03-22 21:02:16', '2023-03-22 21:02:16');
-INSERT INTO `sys_menu` (`menu_id`, `pid`, `sub_count`, `type`, `title`, `name`, `component`, `menu_sort`, `icon`, `path`, `i_frame`, `cache`, `hidden`, `permission`, `create_by`, `update_by`, `create_time`, `update_time`) VALUES (77, 76, 0, 2, '新增课程', NULL, NULL, 999, NULL, NULL, b'0', b'0', b'0', 'couse:add', 'admin', 'admin', '2023-03-22 21:04:10', '2023-03-22 21:04:10');
-INSERT INTO `sys_menu` (`menu_id`, `pid`, `sub_count`, `type`, `title`, `name`, `component`, `menu_sort`, `icon`, `path`, `i_frame`, `cache`, `hidden`, `permission`, `create_by`, `update_by`, `create_time`, `update_time`) VALUES (78, 76, 0, 2, '编辑课程', NULL, NULL, 2, NULL, NULL, b'0', b'0', b'0', 'course:edit', 'admin', 'admin', '2023-03-22 21:04:50', '2023-03-22 21:04:50');
-INSERT INTO `sys_menu` (`menu_id`, `pid`, `sub_count`, `type`, `title`, `name`, `component`, `menu_sort`, `icon`, `path`, `i_frame`, `cache`, `hidden`, `permission`, `create_by`, `update_by`, `create_time`, `update_time`) VALUES (79, 76, 0, 2, '课程删除', NULL, NULL, 3, NULL, NULL, b'0', b'0', b'0', 'course:del', 'admin', 'admin', '2023-03-22 21:05:24', '2023-03-22 21:05:24');
+INSERT INTO `sys_menu` (`menu_id`, `pid`, `sub_count`, `type`, `title`, `name`, `component`, `menu_sort`, `icon`, `path`, `i_frame`, `cache`, `hidden`, `permission`, `create_by`, `update_by`, `create_time`, `update_time`) VALUES (92, NULL, 5, 0, '录入管理', NULL, NULL, 5, 'education', 'enter', b'0', b'0', b'0', NULL, 'admin', 'admin', '2023-03-25 20:17:41', '2023-03-25 20:17:41');
+INSERT INTO `sys_menu` (`menu_id`, `pid`, `sub_count`, `type`, `title`, `name`, `component`, `menu_sort`, `icon`, `path`, `i_frame`, `cache`, `hidden`, `permission`, `create_by`, `update_by`, `create_time`, `update_time`) VALUES (93, 92, 3, 1, '位置管理', 'Location', 'enter/location/index', 3, 'develop', 'location', b'0', b'0', b'0', 'location:list', 'admin', 'admin', '2023-03-25 20:18:55', '2023-03-25 20:21:15');
+INSERT INTO `sys_menu` (`menu_id`, `pid`, `sub_count`, `type`, `title`, `name`, `component`, `menu_sort`, `icon`, `path`, `i_frame`, `cache`, `hidden`, `permission`, `create_by`, `update_by`, `create_time`, `update_time`) VALUES (94, 93, 0, 2, '新增位置', NULL, NULL, 1, NULL, NULL, b'0', b'0', b'0', 'location:add', 'admin', 'admin', '2023-03-25 20:19:29', '2023-03-25 20:19:29');
+INSERT INTO `sys_menu` (`menu_id`, `pid`, `sub_count`, `type`, `title`, `name`, `component`, `menu_sort`, `icon`, `path`, `i_frame`, `cache`, `hidden`, `permission`, `create_by`, `update_by`, `create_time`, `update_time`) VALUES (95, 93, 0, 2, '编辑位置', NULL, NULL, 2, NULL, NULL, b'0', b'0', b'0', 'location:edit', 'admin', 'admin', '2023-03-25 20:19:57', '2023-03-25 20:19:57');
+INSERT INTO `sys_menu` (`menu_id`, `pid`, `sub_count`, `type`, `title`, `name`, `component`, `menu_sort`, `icon`, `path`, `i_frame`, `cache`, `hidden`, `permission`, `create_by`, `update_by`, `create_time`, `update_time`) VALUES (96, 93, 0, 2, '删除位置', NULL, NULL, 3, NULL, NULL, b'0', b'0', b'0', 'location:del', 'admin', 'admin', '2023-03-25 20:20:28', '2023-03-25 20:20:28');
+INSERT INTO `sys_menu` (`menu_id`, `pid`, `sub_count`, `type`, `title`, `name`, `component`, `menu_sort`, `icon`, `path`, `i_frame`, `cache`, `hidden`, `permission`, `create_by`, `update_by`, `create_time`, `update_time`) VALUES (97, 92, 3, 1, '教学区管理', 'TeachBuild', 'enter/teachBuild/index', 4, 'email', 'teachBuild', b'0', b'0', b'0', 'teachBuild:list', 'admin', 'admin', '2023-03-25 20:22:50', '2023-03-25 20:22:50');
+INSERT INTO `sys_menu` (`menu_id`, `pid`, `sub_count`, `type`, `title`, `name`, `component`, `menu_sort`, `icon`, `path`, `i_frame`, `cache`, `hidden`, `permission`, `create_by`, `update_by`, `create_time`, `update_time`) VALUES (98, 97, 0, 2, '新增教学区', NULL, NULL, 1, NULL, NULL, b'0', b'0', b'0', 'teachBuild:add', 'admin', 'admin', '2023-03-25 20:23:47', '2023-03-25 20:23:47');
+INSERT INTO `sys_menu` (`menu_id`, `pid`, `sub_count`, `type`, `title`, `name`, `component`, `menu_sort`, `icon`, `path`, `i_frame`, `cache`, `hidden`, `permission`, `create_by`, `update_by`, `create_time`, `update_time`) VALUES (99, 97, 0, 2, '编辑教学区', NULL, NULL, 2, NULL, NULL, b'0', b'0', b'0', 'teachuild:edit', 'admin', 'admin', '2023-03-25 20:24:31', '2023-03-25 20:24:31');
+INSERT INTO `sys_menu` (`menu_id`, `pid`, `sub_count`, `type`, `title`, `name`, `component`, `menu_sort`, `icon`, `path`, `i_frame`, `cache`, `hidden`, `permission`, `create_by`, `update_by`, `create_time`, `update_time`) VALUES (100, 97, 0, 2, '删除教学区', NULL, NULL, 3, NULL, NULL, b'0', b'0', b'0', 'teachBuild:del', 'admin', 'admin', '2023-03-25 20:24:57', '2023-03-25 20:24:57');
+INSERT INTO `sys_menu` (`menu_id`, `pid`, `sub_count`, `type`, `title`, `name`, `component`, `menu_sort`, `icon`, `path`, `i_frame`, `cache`, `hidden`, `permission`, `create_by`, `update_by`, `create_time`, `update_time`) VALUES (101, 92, 3, 1, '教室管理', 'Classroom', 'enter/classroom/index', 8, 'redis', 'classroom', b'0', b'0', b'0', 'classroom:list', 'admin', 'admin', '2023-03-25 20:27:38', '2023-03-25 20:27:38');
+INSERT INTO `sys_menu` (`menu_id`, `pid`, `sub_count`, `type`, `title`, `name`, `component`, `menu_sort`, `icon`, `path`, `i_frame`, `cache`, `hidden`, `permission`, `create_by`, `update_by`, `create_time`, `update_time`) VALUES (102, 101, 0, 2, '新增教室', NULL, NULL, 1, NULL, NULL, b'0', b'0', b'0', 'classroom:add', 'admin', 'admin', '2023-03-25 20:28:14', '2023-03-25 20:28:14');
+INSERT INTO `sys_menu` (`menu_id`, `pid`, `sub_count`, `type`, `title`, `name`, `component`, `menu_sort`, `icon`, `path`, `i_frame`, `cache`, `hidden`, `permission`, `create_by`, `update_by`, `create_time`, `update_time`) VALUES (103, 101, 0, 2, '编辑教室', NULL, NULL, 2, NULL, NULL, b'0', b'0', b'0', 'classroom:edit', 'admin', 'admin', '2023-03-25 20:28:46', '2023-03-25 20:28:46');
+INSERT INTO `sys_menu` (`menu_id`, `pid`, `sub_count`, `type`, `title`, `name`, `component`, `menu_sort`, `icon`, `path`, `i_frame`, `cache`, `hidden`, `permission`, `create_by`, `update_by`, `create_time`, `update_time`) VALUES (104, 101, 0, 2, '删除教室', NULL, NULL, 3, NULL, NULL, b'0', b'0', b'0', 'classroom:del', 'admin', 'admin', '2023-03-25 20:29:12', '2023-03-25 20:29:12');
+INSERT INTO `sys_menu` (`menu_id`, `pid`, `sub_count`, `type`, `title`, `name`, `component`, `menu_sort`, `icon`, `path`, `i_frame`, `cache`, `hidden`, `permission`, `create_by`, `update_by`, `create_time`, `update_time`) VALUES (105, 92, 3, 1, '班级管理', 'Classes', 'enter/classes/index', 12, 'markdown', 'classes', b'0', b'0', b'0', 'class:list', 'admin', 'admin', '2023-03-25 20:30:57', '2023-03-25 20:30:57');
+INSERT INTO `sys_menu` (`menu_id`, `pid`, `sub_count`, `type`, `title`, `name`, `component`, `menu_sort`, `icon`, `path`, `i_frame`, `cache`, `hidden`, `permission`, `create_by`, `update_by`, `create_time`, `update_time`) VALUES (106, 105, 0, 2, '新增班级', NULL, NULL, 1, NULL, NULL, b'0', b'0', b'0', 'class:add', 'admin', 'admin', '2023-03-25 20:31:22', '2023-03-25 20:31:22');
+INSERT INTO `sys_menu` (`menu_id`, `pid`, `sub_count`, `type`, `title`, `name`, `component`, `menu_sort`, `icon`, `path`, `i_frame`, `cache`, `hidden`, `permission`, `create_by`, `update_by`, `create_time`, `update_time`) VALUES (107, 105, 0, 2, '编辑班级', NULL, NULL, 2, NULL, NULL, b'0', b'0', b'0', 'class:edit', 'admin', 'admin', '2023-03-25 20:32:22', '2023-03-25 20:32:22');
+INSERT INTO `sys_menu` (`menu_id`, `pid`, `sub_count`, `type`, `title`, `name`, `component`, `menu_sort`, `icon`, `path`, `i_frame`, `cache`, `hidden`, `permission`, `create_by`, `update_by`, `create_time`, `update_time`) VALUES (108, 105, 0, 2, '删除班级', NULL, NULL, 3, NULL, NULL, b'0', b'0', b'0', 'class:del', 'admin', 'admin', '2023-03-25 20:32:49', '2023-03-25 20:32:49');
+INSERT INTO `sys_menu` (`menu_id`, `pid`, `sub_count`, `type`, `title`, `name`, `component`, `menu_sort`, `icon`, `path`, `i_frame`, `cache`, `hidden`, `permission`, `create_by`, `update_by`, `create_time`, `update_time`) VALUES (109, 92, 3, 1, '课程管理', 'Course', 'enter/course/index', 18, 'source', 'course', b'0', b'0', b'0', 'course:list', 'admin', 'admin', '2023-03-25 20:34:09', '2023-03-25 20:34:09');
+INSERT INTO `sys_menu` (`menu_id`, `pid`, `sub_count`, `type`, `title`, `name`, `component`, `menu_sort`, `icon`, `path`, `i_frame`, `cache`, `hidden`, `permission`, `create_by`, `update_by`, `create_time`, `update_time`) VALUES (110, 109, 0, 2, '新增课程', NULL, NULL, 1, NULL, NULL, b'0', b'0', b'0', 'course:add', 'admin', 'admin', '2023-03-25 20:34:32', '2023-03-25 20:34:32');
+INSERT INTO `sys_menu` (`menu_id`, `pid`, `sub_count`, `type`, `title`, `name`, `component`, `menu_sort`, `icon`, `path`, `i_frame`, `cache`, `hidden`, `permission`, `create_by`, `update_by`, `create_time`, `update_time`) VALUES (111, 109, 0, 2, '编辑课程', NULL, NULL, 2, NULL, NULL, b'0', b'0', b'0', 'course:edit', 'admin', 'admin', '2023-03-25 20:34:59', '2023-03-25 20:34:59');
+INSERT INTO `sys_menu` (`menu_id`, `pid`, `sub_count`, `type`, `title`, `name`, `component`, `menu_sort`, `icon`, `path`, `i_frame`, `cache`, `hidden`, `permission`, `create_by`, `update_by`, `create_time`, `update_time`) VALUES (112, 109, 0, 2, '删除课程', NULL, NULL, 3, NULL, NULL, b'0', b'0', b'0', 'course:del', 'admin', 'admin', '2023-03-25 20:35:26', '2023-03-25 20:35:26');
 COMMIT;
 
 -- ----------------------------
@@ -304,8 +322,8 @@ CREATE TABLE `sys_role` (
 -- Records of sys_role
 -- ----------------------------
 BEGIN;
-INSERT INTO `sys_role` (`role_id`, `name`, `level`, `description`, `create_by`, `update_by`, `create_time`, `update_time`) VALUES (1, '超级管理员', 1, '超级管理员', NULL, 'admin', '2023-03-03 11:15:49', '2023-03-22 21:06:07');
-INSERT INTO `sys_role` (`role_id`, `name`, `level`, `description`, `create_by`, `update_by`, `create_time`, `update_time`) VALUES (2, '普通用户', 2, '-', NULL, 'admin', '2023-03-03 11:15:49', '2023-03-22 21:08:54');
+INSERT INTO `sys_role` (`role_id`, `name`, `level`, `description`, `create_by`, `update_by`, `create_time`, `update_time`) VALUES (1, '超级管理员', 1, '超级管理员', NULL, 'admin', '2023-03-03 11:15:49', '2023-03-25 20:35:36');
+INSERT INTO `sys_role` (`role_id`, `name`, `level`, `description`, `create_by`, `update_by`, `create_time`, `update_time`) VALUES (2, '普通用户', 2, '-', NULL, 'admin', '2023-03-03 11:15:49', '2023-03-25 20:35:47');
 COMMIT;
 
 -- ----------------------------
@@ -340,27 +358,35 @@ INSERT INTO `sys_roles_menus` (`menu_id`, `role_id`) VALUES (54, 1);
 INSERT INTO `sys_roles_menus` (`menu_id`, `role_id`) VALUES (64, 1);
 INSERT INTO `sys_roles_menus` (`menu_id`, `role_id`) VALUES (65, 1);
 INSERT INTO `sys_roles_menus` (`menu_id`, `role_id`) VALUES (66, 1);
-INSERT INTO `sys_roles_menus` (`menu_id`, `role_id`) VALUES (67, 1);
-INSERT INTO `sys_roles_menus` (`menu_id`, `role_id`) VALUES (68, 1);
-INSERT INTO `sys_roles_menus` (`menu_id`, `role_id`) VALUES (69, 1);
-INSERT INTO `sys_roles_menus` (`menu_id`, `role_id`) VALUES (70, 1);
-INSERT INTO `sys_roles_menus` (`menu_id`, `role_id`) VALUES (71, 1);
-INSERT INTO `sys_roles_menus` (`menu_id`, `role_id`) VALUES (72, 1);
-INSERT INTO `sys_roles_menus` (`menu_id`, `role_id`) VALUES (73, 1);
-INSERT INTO `sys_roles_menus` (`menu_id`, `role_id`) VALUES (74, 1);
-INSERT INTO `sys_roles_menus` (`menu_id`, `role_id`) VALUES (75, 1);
-INSERT INTO `sys_roles_menus` (`menu_id`, `role_id`) VALUES (76, 1);
-INSERT INTO `sys_roles_menus` (`menu_id`, `role_id`) VALUES (77, 1);
-INSERT INTO `sys_roles_menus` (`menu_id`, `role_id`) VALUES (78, 1);
-INSERT INTO `sys_roles_menus` (`menu_id`, `role_id`) VALUES (79, 1);
-INSERT INTO `sys_roles_menus` (`menu_id`, `role_id`) VALUES (120, 1);
+INSERT INTO `sys_roles_menus` (`menu_id`, `role_id`) VALUES (92, 1);
+INSERT INTO `sys_roles_menus` (`menu_id`, `role_id`) VALUES (93, 1);
+INSERT INTO `sys_roles_menus` (`menu_id`, `role_id`) VALUES (94, 1);
+INSERT INTO `sys_roles_menus` (`menu_id`, `role_id`) VALUES (95, 1);
+INSERT INTO `sys_roles_menus` (`menu_id`, `role_id`) VALUES (96, 1);
+INSERT INTO `sys_roles_menus` (`menu_id`, `role_id`) VALUES (97, 1);
+INSERT INTO `sys_roles_menus` (`menu_id`, `role_id`) VALUES (98, 1);
+INSERT INTO `sys_roles_menus` (`menu_id`, `role_id`) VALUES (99, 1);
+INSERT INTO `sys_roles_menus` (`menu_id`, `role_id`) VALUES (100, 1);
+INSERT INTO `sys_roles_menus` (`menu_id`, `role_id`) VALUES (101, 1);
+INSERT INTO `sys_roles_menus` (`menu_id`, `role_id`) VALUES (102, 1);
+INSERT INTO `sys_roles_menus` (`menu_id`, `role_id`) VALUES (103, 1);
+INSERT INTO `sys_roles_menus` (`menu_id`, `role_id`) VALUES (104, 1);
+INSERT INTO `sys_roles_menus` (`menu_id`, `role_id`) VALUES (105, 1);
+INSERT INTO `sys_roles_menus` (`menu_id`, `role_id`) VALUES (106, 1);
+INSERT INTO `sys_roles_menus` (`menu_id`, `role_id`) VALUES (107, 1);
+INSERT INTO `sys_roles_menus` (`menu_id`, `role_id`) VALUES (108, 1);
+INSERT INTO `sys_roles_menus` (`menu_id`, `role_id`) VALUES (109, 1);
+INSERT INTO `sys_roles_menus` (`menu_id`, `role_id`) VALUES (110, 1);
+INSERT INTO `sys_roles_menus` (`menu_id`, `role_id`) VALUES (111, 1);
+INSERT INTO `sys_roles_menus` (`menu_id`, `role_id`) VALUES (112, 1);
 INSERT INTO `sys_roles_menus` (`menu_id`, `role_id`) VALUES (1, 2);
 INSERT INTO `sys_roles_menus` (`menu_id`, `role_id`) VALUES (2, 2);
+INSERT INTO `sys_roles_menus` (`menu_id`, `role_id`) VALUES (39, 2);
 INSERT INTO `sys_roles_menus` (`menu_id`, `role_id`) VALUES (44, 2);
 INSERT INTO `sys_roles_menus` (`menu_id`, `role_id`) VALUES (46, 2);
-INSERT INTO `sys_roles_menus` (`menu_id`, `role_id`) VALUES (67, 2);
-INSERT INTO `sys_roles_menus` (`menu_id`, `role_id`) VALUES (68, 2);
-INSERT INTO `sys_roles_menus` (`menu_id`, `role_id`) VALUES (71, 2);
+INSERT INTO `sys_roles_menus` (`menu_id`, `role_id`) VALUES (64, 2);
+INSERT INTO `sys_roles_menus` (`menu_id`, `role_id`) VALUES (65, 2);
+INSERT INTO `sys_roles_menus` (`menu_id`, `role_id`) VALUES (66, 2);
 COMMIT;
 
 -- ----------------------------
@@ -395,7 +421,6 @@ CREATE TABLE `sys_user` (
 BEGIN;
 INSERT INTO `sys_user` (`user_id`, `username`, `gender`, `phone`, `avatar_name`, `avatar_path`, `password`, `is_admin`, `enabled`, `create_by`, `update_by`, `pwd_reset_time`, `create_time`, `update_time`) VALUES (1, 'admin', '男', '18888888888', 'avatar-20230303032831684.png', '/Users/lucifinil/Documents/arrang-courses/arrang-courses-system/target/~/avatar/avatar-20230303032831684.png', '$2a$10$E9Sls63fnvaYnG9yGdD8V.DgId6laxefSQT8Q1F.w1Y.o2pr/fmea', b'1', 1, NULL, 'admin', '2023-03-03 14:04:07', '2023-03-03 09:11:56', '2023-03-03 15:28:32');
 INSERT INTO `sys_user` (`user_id`, `username`, `gender`, `phone`, `avatar_name`, `avatar_path`, `password`, `is_admin`, `enabled`, `create_by`, `update_by`, `pwd_reset_time`, `create_time`, `update_time`) VALUES (2, 'test', '男', '19999999999', NULL, NULL, '$2a$10$4XcyudOYTSz6fue6KFNMHeUQnCX5jbBQypLEnGk1PmekXt5c95JcK', b'0', 1, 'admin', 'admin', NULL, '2023-03-03 11:15:49', '2023-03-03 11:15:49');
-INSERT INTO `sys_user` (`user_id`, `username`, `gender`, `phone`, `avatar_name`, `avatar_path`, `password`, `is_admin`, `enabled`, `create_by`, `update_by`, `pwd_reset_time`, `create_time`, `update_time`) VALUES (3, '99', '男', '17888888888', 'avatar-20230303032831684.png', '/Users/lucifinil/Documents/arrang-courses/arrang-courses-system/target/~/avatar/avatar-20230303032831684.png', '$2a$10$ymT3BO3czXQavghtIROX0ON1QhNEnSYK4yhONROyFEHrUd3kqEvxq', b'0', 0, 'admin', 'admin', '2023-03-03 14:04:07', '2023-03-22 13:30:58', '2023-03-22 13:31:06');
 COMMIT;
 
 -- ----------------------------
@@ -414,7 +439,6 @@ CREATE TABLE `sys_users_roles` (
 -- ----------------------------
 BEGIN;
 INSERT INTO `sys_users_roles` (`user_id`, `role_id`) VALUES (1, 1);
-INSERT INTO `sys_users_roles` (`user_id`, `role_id`) VALUES (3, 1);
 INSERT INTO `sys_users_roles` (`user_id`, `role_id`) VALUES (2, 2);
 COMMIT;
 
