@@ -21,15 +21,7 @@ public class CourseDto extends BaseDTO implements Serializable {
 
     private String name;
 
-    private String publisher;
-
-    private String status;
-
-    private Integer level;
-
-    private Long hour;
-
-    private Long credit;
+    private String courseAttr;
 
     private String remarks;
 }

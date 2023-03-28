@@ -2,7 +2,7 @@ package com.lucifer.service.dto;
 
 import com.lucifer.base.BaseDTO;
 import com.lucifer.domain.Classroom;
-import com.lucifer.domain.Location;
+import com.lucifer.domain.College;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -22,9 +22,9 @@ public class TeachBuildDto extends BaseDTO implements Serializable {
 
     private String name;
 
-    private Location location;
-
     private List<Classroom> classroom;
+
+    private List<College> colleges;
 
     private String remarks;
 }

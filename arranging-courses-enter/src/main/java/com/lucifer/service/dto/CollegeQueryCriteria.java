@@ -10,7 +10,7 @@ import java.util.List;
  * @author lucifer
  */
 @Data
-public class GradeQueryCriteria {
+public class CollegeQueryCriteria {
 
     /**
      * 模糊

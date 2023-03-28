@@ -1,8 +1,8 @@
 package com.lucifer.service.mapstruct;
 
 import com.lucifer.base.BaseMapper;
-import com.lucifer.domain.Location;
-import com.lucifer.service.dto.LocationDto;
+import com.lucifer.domain.Teacher;
+import com.lucifer.service.dto.TeacherDto;
 import org.mapstruct.Mapper;
 import org.mapstruct.ReportingPolicy;
 
@@ -10,5 +10,5 @@ import org.mapstruct.ReportingPolicy;
  * @author lucifer
  */
 @Mapper(componentModel = "spring",uses = {}, unmappedTargetPolicy = ReportingPolicy.IGNORE)
-public interface LocationMapper extends BaseMapper<LocationDto, Location> {
+public interface TeacherMapper extends BaseMapper<TeacherDto, Teacher> {
 }

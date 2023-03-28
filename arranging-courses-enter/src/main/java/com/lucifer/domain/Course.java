@@ -38,21 +38,9 @@ public class Course extends BaseEntity implements Serializable {
     @ApiModelProperty(value = "课程名称")
     private String name;
 
-    @ApiModelProperty(value = "出版社")
-    private String publisher;
-
-    @ApiModelProperty(value = "课程状态(字典)")
     @NotBlank
-    private String status;
-
-    @ApiModelProperty(value = "优先级")
-    private Integer level;
-
-    @ApiModelProperty(value = "学时")
-    private Long hour;
-
-    @ApiModelProperty(value = "学分")
-    private Long credit;
+    @ApiModelProperty(value = "属性")
+    private String courseAttr;
 
     @ApiModelProperty(value = "备注")
     private String remarks;

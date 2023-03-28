@@ -1,7 +1,9 @@
 package com.lucifer.service.dto;
 
 import com.lucifer.base.BaseDTO;
+import com.lucifer.domain.College;
 import com.lucifer.domain.TeachBuild;
+import com.lucifer.domain.Teacher;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -13,13 +15,17 @@ import java.util.List;
  */
 @Getter
 @Setter
-public class LocationDto extends BaseDTO implements Serializable {
+public class TeacherDto extends BaseDTO implements Serializable {
 
     private Long id;
 
+    private String teacherNo;
+
     private String name;
 
-    private List<TeachBuild> teachBuildList;
+    private College college;
 
-    private String remarks;
+    private Integer age;
+
+    private String title;
 }

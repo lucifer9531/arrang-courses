@@ -32,10 +32,6 @@ public class Classroom extends BaseEntity implements Serializable {
     @ApiModelProperty(value = "编号")
     private String classroomNo;
 
-    @NotBlank
-    @ApiModelProperty(value = "教室名称")
-    private String name;
-
     @ApiModelProperty(value = "所属教学楼", hidden = true)
     @JSONField(serialize = false)
     @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.REFRESH}, optional = false)
@@ -47,9 +43,8 @@ public class Classroom extends BaseEntity implements Serializable {
     private Long capacity;
 
 
-    @ApiModelProperty(value = "是否使用")
-    @NotNull
-    private Boolean isUsed;
+    @ApiModelProperty(value = "属性")
+    private String classroomAttr;
 
     @ApiModelProperty(value = "备注")
     private String remarks;
