@@ -13,6 +13,8 @@
         <module>arranging-courses-common</module>
         <module>arranging-courses-system</module>
         <module>arranging-courses-enter</module>
+        <module>arranging-courses-search</module>
+        <module>arranging-courses-schedule</module>
     </modules>
 
     <name>自动排课系统后台管理</name>
