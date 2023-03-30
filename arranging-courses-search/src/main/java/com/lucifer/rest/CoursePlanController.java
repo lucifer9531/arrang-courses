@@ -24,7 +24,7 @@ public class CoursePlanController {
 
     private final CoursePlanService coursePlanService;
 
-    @ApiOperation(value = "查询班级")
+    @ApiOperation(value = "查询课表")
     @GetMapping
     @PreAuthorize("@el.check('coursePlan:list')")
     public ResponseEntity<Object> query(@RequestParam(value = "semester", required = false) String semester, @RequestParam(value = "collegeNo", required = false) String collegeNo) {

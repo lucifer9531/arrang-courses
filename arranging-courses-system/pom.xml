@@ -36,6 +36,12 @@
             <version>1.0.0</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.lucifer</groupId>
+            <artifactId>arranging-courses-schedule</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+
         <!-- jwt -->
         <dependency>
             <groupId>io.jsonwebtoken</groupId>
