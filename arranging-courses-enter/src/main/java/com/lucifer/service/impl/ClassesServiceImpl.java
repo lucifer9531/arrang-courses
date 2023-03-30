@@ -4,6 +4,7 @@ import com.lucifer.domain.Classes;
 import com.lucifer.exception.EntityExistException;
 import com.lucifer.repository.ClassesRepository;
 import com.lucifer.service.ClassesService;
+import com.lucifer.service.dto.ClassesDto;
 import com.lucifer.service.dto.ClassesQueryCriteria;
 import com.lucifer.service.mapstruct.ClassesMapper;
 import com.lucifer.utils.PageUtil;
@@ -15,6 +16,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -32,6 +34,11 @@ public class ClassesServiceImpl implements ClassesService {
     public Object queryAll(ClassesQueryCriteria criteria, Pageable pageable) {
         Page<Classes> page = classesRepository.findAll((root, criteriaQuery, criteriaBuilder) -> QueryHelp.getPredicate(root, criteria, criteriaBuilder), pageable);
         return PageUtil.toPage(page.map(classesMapper::toDto));
+    }
+
+    @Override
+    public List<ClassesDto> queryAll() {
+        return classesMapper.toDto(classesRepository.findAll());
     }
 
     @Override

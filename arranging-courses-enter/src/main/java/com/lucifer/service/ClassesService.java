@@ -1,9 +1,11 @@
 package com.lucifer.service;
 
 import com.lucifer.domain.Classes;
+import com.lucifer.service.dto.ClassesDto;
 import com.lucifer.service.dto.ClassesQueryCriteria;
 import org.springframework.data.domain.Pageable;
 
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -35,4 +37,10 @@ public interface ClassesService {
      * @param ids
      */
     void delete(Set<Long> ids);
+
+    /**
+     * 查询全部班级
+     * @return
+     */
+    List<ClassesDto> queryAll();
 }

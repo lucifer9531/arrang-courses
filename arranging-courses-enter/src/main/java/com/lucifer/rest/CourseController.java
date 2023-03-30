@@ -33,6 +33,13 @@ public class CourseController {
         return new ResponseEntity<>(courseService.queryAll(criteria, pageable), HttpStatus.OK);
     }
 
+    @ApiOperation("返回全部课程")
+    @GetMapping(value = "/all")
+    @PreAuthorize("@el.check('course:list','task:add','task:edit')")
+    public ResponseEntity<Object> queryAll(){
+        return new ResponseEntity<>(courseService.queryAll(),HttpStatus.OK);
+    }
+
     @ApiOperation(value = "新增课程")
     @PostMapping
     @PreAuthorize("@el.check('course:add')")

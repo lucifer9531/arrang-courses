@@ -20,10 +20,11 @@ public interface ClassTaskRepository extends JpaRepository<ClassTask, Long>, Jpa
      * @param pageable
      * @return
      */
-    @Query(value = "SELECT clt.task_id, clt.semester, clt.college_no, cl.name as class_no, co.name as course_no, te.name as teacher_no, clt.course_attr," +
-            "clt.student_number, clt.weeks_sum, clt.weeks_number, clt.is_fix, clt.class_time, clt.create_by, clt.create_time, clt.update_by, " +
-            "clt.update_time FROM cms_class_task clt, enter_class cl, enter_course co, enter_teacher te WHERE cl.class_no = clt.class_no and" +
-            " co.course_no = clt.course_no and clt.teacher_no = te.teacher_no and (clt.college_no = ?1 or ?1 is null) and (clt.semester = ?2 or ?2 is null)", nativeQuery = true)
+    @Query(value = "SELECT clt.task_id, clt.semester, cl.name as class_no, co.name as course_no, te.name as teacher_no, coll.name as college_no," +
+            " clt.course_attr,clt.student_number, clt.weeks_sum, clt.weeks_number, clt.is_fix, clt.class_time, clt.create_by, clt.create_time, clt.update_by, " +
+            "clt.update_time FROM cms_class_task clt, enter_class cl, enter_course co, enter_teacher te, enter_college coll WHERE cl.class_no = clt.class_no and" +
+            " co.course_no = clt.course_no and clt.teacher_no = te.teacher_no and clt.college_no = coll.college_no and (clt.college_no = ?1 or ?1 is null) " +
+            "and (clt.semester = ?2 or ?2 is null)", nativeQuery = true)
     List<ClassTask> queryAll(String collegeNo, String semester, Pageable pageable);
 
     /**

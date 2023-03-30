@@ -3,6 +3,7 @@ package com.lucifer.service.impl;
 import com.lucifer.domain.Course;
 import com.lucifer.repository.CourseRepository;
 import com.lucifer.service.CourseService;
+import com.lucifer.service.dto.CourseDto;
 import com.lucifer.service.dto.CourseQueryCriteria;
 import com.lucifer.service.mapstruct.CourseMapper;
 import com.lucifer.utils.PageUtil;
@@ -14,6 +15,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -31,6 +33,11 @@ public class CourseServiceImpl implements CourseService {
     public Object queryAll(CourseQueryCriteria criteria, Pageable pageable) {
         Page<Course> page = courseRepository.findAll((root, criteriaQuery, criteriaBuilder) -> QueryHelp.getPredicate(root, criteria, criteriaBuilder), pageable);
         return PageUtil.toPage(page.map(courseMapper::toDto));
+    }
+
+    @Override
+    public List<CourseDto> queryAll() {
+        return courseMapper.toDto(courseRepository.findAll());
     }
 
     @Override
