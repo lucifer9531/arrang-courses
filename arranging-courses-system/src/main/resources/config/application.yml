@@ -20,15 +20,6 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.MySQL5InnoDBDialect
 
-  redis:
-    #数据库索引
-    database: ${REDIS_DB:0}
-    host: ${REDIS_HOST:60.205.181.203}
-    port: ${REDIS_PORT:6379}
-    password: ${REDIS_PWD:}
-    #连接超时时间
-    timeout: 5000
-
 task:
   pool:
     # 核心线程池大小

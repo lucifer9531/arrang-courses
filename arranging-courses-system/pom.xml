@@ -5,7 +5,7 @@
     <parent>
         <artifactId>arranging-courses</artifactId>
         <groupId>com.lucifer</groupId>
-        <version>1.0.0</version>
+        <version>1.0.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
@@ -20,14 +20,14 @@
         <dependency>
             <groupId>com.lucifer</groupId>
             <artifactId>arranging-courses-common</artifactId>
-            <version>1.0.0</version>
+            <version>1.0.0-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>
 
         <dependency>
             <groupId>com.lucifer</groupId>
             <artifactId>arranging-courses-schedule</artifactId>
-            <version>1.0.0</version>
+            <version>1.0.0-SNAPSHOT</version>
         </dependency>
 
         <!-- jwt -->
