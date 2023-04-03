@@ -3,6 +3,7 @@ package com.lucifer.service.impl;
 import com.lucifer.domain.ClassTask;
 import com.lucifer.domain.Classroom;
 import com.lucifer.domain.CoursePlan;
+import com.lucifer.domain.vo.SemesterVo;
 import com.lucifer.repository.*;
 import com.lucifer.service.ClassTaskService;
 import com.lucifer.service.dto.ClassTaskDto;
@@ -69,9 +70,9 @@ public class ClassTaskServiceImpl implements ClassTaskService {
 
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public void classScheduling(ClassTask classTask) {
+    public void classScheduling(SemesterVo semesterVo) {
         // 获取开课任务
-        List<ClassTask> classTaskList = classTaskRepository.queryAllBySemester(classTask.getSemester());
+        List<ClassTask> classTaskList = classTaskRepository.queryAllBySemester(semesterVo.getSemester());
         // 将开课任务进行编码
         List<Map<String, List<String>>> geneList = coding(classTaskList);
         // 开始进行时间分配
@@ -83,18 +84,19 @@ public class ClassTaskServiceImpl implements ClassTaskService {
         // 分配教室
         List<String> resultList = finalResult(individualMap);
         //第七步对分配好时间教室的基因进行解码，准备存入数据库
-        List<CoursePlan> coursePlanList = decoding(resultList);
+         List<CoursePlan> coursePlanList = decoding(resultList);
         //将分配好时间和教室的对象更新到数据库中的course_plan数据表中
-        coursePlanRepository.saveAll(coursePlanList);
-        //将开课学期还有上课周数更新进上课计划表(course_plan)，在编码里不包括开课学期以及上课周数所以需要这一步操作
-        for (ClassTask classTask1 : classTaskList) {
-           coursePlanRepository.updateWeeksSumAndSemester(classTask1);
+         coursePlanRepository.saveAll(coursePlanList);
+        //将开课学期还有上课周数更新进上课计划表(course_plan)，在编码里不包括开课学期以及上课周数 所以需要这一步操作
+        for (ClassTask classTask : classTaskList) {
+            coursePlanRepository.updateWeeksSumAndSemester(classTask.getWeeksSum(), classTask.getSemester(), classTask.getCollegeNo(),
+                    classTask.getClassNo(), classTask.getCourseNo(), classTask.getTeacherNo());
         }
     }
 
     private Map<String, List<String>> transformIndividual(List<String> resultGeneList) {
         Map<String, List<String>> individualMap = new HashMap<>();
-        List<String> classNoList = classTaskRepository.selectByColumnName(ArrangingConstant.CLASS_NO);
+        List<String> classNoList = classTaskRepository.selectClassNoList();
         for (String classNo : classNoList) {
             List<String> geneList = new ArrayList<>();
             for (String gene : resultGeneList) {
@@ -270,7 +272,7 @@ public class ClassTaskServiceImpl implements ClassTaskService {
         //教室编号
         String classroomNo;
         //学院编号集合
-        List<String> collegeNoList = classTaskRepository.selectByColumnName(ArrangingConstant.COLLEGE_NO);
+        List<String> collegeNoList = classTaskRepository.selectCollegeNoList();
         //将基因按学院分配
         Map<String, List<String>> map = geneByCollege(resultGeneList, collegeNoList);
         for (String collegeNo : map.keySet()) {

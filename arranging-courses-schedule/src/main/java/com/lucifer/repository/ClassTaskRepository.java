@@ -44,9 +44,15 @@ public interface ClassTaskRepository extends JpaRepository<ClassTask, Long>, Jpa
 
     /**
      * 根据列名查询
-     * @param columnName
      * @return
      */
-    @Query(value = "SELECT distinct ?1 from cms_class_task", nativeQuery = true)
-    List<String> selectByColumnName(String columnName);
+    @Query(value = "SELECT distinct class_no from cms_class_task", nativeQuery = true)
+    List<String> selectClassNoList();
+
+    /**
+     * 根据列名查询
+     * @return
+     */
+    @Query(value = "SELECT distinct college_no from cms_class_task", nativeQuery = true)
+    List<String> selectCollegeNoList();
 }

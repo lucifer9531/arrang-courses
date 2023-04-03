@@ -1,6 +1,7 @@
 package com.lucifer.service;
 
 import com.lucifer.domain.ClassTask;
+import com.lucifer.domain.vo.SemesterVo;
 import com.lucifer.service.dto.ClassTaskDto;
 import org.springframework.data.domain.Pageable;
 
@@ -46,7 +47,7 @@ public interface ClassTaskService {
 
     /**
      * 排课
-     * @param classTask
+     * @param semesterVo
      */
-    void classScheduling(ClassTask classTask);
+    void classScheduling(SemesterVo semesterVo);
 }

@@ -2,7 +2,6 @@ package com.lucifer.repository;
 
 import com.lucifer.domain.ClassTask;
 import com.lucifer.domain.CoursePlan;
-import io.lettuce.core.dynamic.annotation.Param;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Modifying;
@@ -27,12 +26,18 @@ public interface CoursePlanRepository extends JpaRepository<CoursePlan, Long>, J
             "(cop.semester = ?1 or ?1 is null) and (cop.college_no = ?2 or ?2 is null) order by cop.class_time asc", nativeQuery = true)
     List<CoursePlan> queryCoursePlan(String semester, String collegeNo);
 
+
     /**
-     * 更新
-     * @param task
+     * 更新操作
+     * @param weeksSum
+     * @param semester
+     * @param collegeNo
+     * @param classNo
+     * @param courseNo
+     * @param teacherNo
      */
     @Modifying
-    @Query(value = "update cms_course_plan cop set weeks_sum = :#{#task.weeksSum}, semester = :#{#task.semester} where cop.college_no = :#{#task.collegeNo}" +
-            " and cop.class_no = :#{#task.classNo} and cop.course_no = :#{task.courseNo} and cop.teacher_no = :#{#task.teacherNo}", nativeQuery = true)
-    void updateWeeksSumAndSemester(@Param("classTask") ClassTask task);
+    @Query(value = "update cms_course_plan cop set weeks_sum = ?1, semester = ?2 where cop.college_no = ?3 and cop.class_no = ?4 and cop.course_no = ?5 " +
+            "and cop.teacher_no = ?6", nativeQuery = true)
+    void updateWeeksSumAndSemester(Integer weeksSum, String semester, String collegeNo, String classNo, String courseNo, String teacherNo);
 }

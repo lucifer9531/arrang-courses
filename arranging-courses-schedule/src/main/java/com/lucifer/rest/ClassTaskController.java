@@ -1,6 +1,7 @@
 package com.lucifer.rest;
 
 import com.lucifer.domain.ClassTask;
+import com.lucifer.domain.vo.SemesterVo;
 import com.lucifer.service.ClassTaskService;
 import com.lucifer.service.dto.ClassTaskDto;
 import com.lucifer.utils.PageUtil;
@@ -66,8 +67,8 @@ public class ClassTaskController {
     @ApiOperation(value = "排课")
     @PostMapping("/classScheduling")
     @PreAuthorize("@el.check('task:schedule')")
-    public ResponseEntity<Object> delete(@RequestBody ClassTask classTask) {
-        classTaskService.classScheduling(classTask);
+    public ResponseEntity<Object> delete(@RequestBody SemesterVo semesterVo) {
+        classTaskService.classScheduling(semesterVo);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 }
