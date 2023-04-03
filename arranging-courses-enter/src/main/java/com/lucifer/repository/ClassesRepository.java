@@ -4,6 +4,8 @@ import com.lucifer.domain.Classes;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 
+import javax.validation.constraints.NotBlank;
+
 /**
  * @author lucifer
  */
@@ -13,5 +15,5 @@ public interface ClassesRepository extends JpaRepository<Classes, Long>, JpaSpec
      * @param classNo
      * @return
      */
-    Classes findByClassNo(String classNo);
+    Classes findByClassNo(@NotBlank String classNo);
 }

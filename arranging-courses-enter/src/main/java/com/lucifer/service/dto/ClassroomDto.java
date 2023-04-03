@@ -20,6 +20,8 @@ public class ClassroomDto extends BaseDTO implements Serializable {
 
     private TeachBuild teachBuild;
 
+    private String teachBuildNo;
+
     private Long capacity;
 
     private String classroomAttr;

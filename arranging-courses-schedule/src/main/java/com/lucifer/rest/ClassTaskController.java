@@ -62,4 +62,12 @@ public class ClassTaskController {
         classTaskService.delete(ids);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
+    @ApiOperation(value = "排课")
+    @PostMapping("/classScheduling")
+    @PreAuthorize("@el.check('task:schedule')")
+    public ResponseEntity<Object> delete(@RequestBody ClassTask classTask) {
+        classTaskService.classScheduling(classTask);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 }

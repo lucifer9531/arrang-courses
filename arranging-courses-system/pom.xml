@@ -26,18 +26,6 @@
 
         <dependency>
             <groupId>com.lucifer</groupId>
-            <artifactId>arranging-courses-enter</artifactId>
-            <version>1.0.0</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.lucifer</groupId>
-            <artifactId>arranging-courses-search</artifactId>
-            <version>1.0.0</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.lucifer</groupId>
             <artifactId>arranging-courses-schedule</artifactId>
             <version>1.0.0</version>
         </dependency>

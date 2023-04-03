@@ -38,6 +38,11 @@ public class Classroom extends BaseEntity implements Serializable {
     @JoinColumn(name = "teach_build_id")
     private TeachBuild teachBuild;
 
+
+    @NotBlank
+    @ApiModelProperty(value = "教学楼编号")
+    private String teachBuildNo;
+
     @NotNull
     @ApiModelProperty(value = "教室容量")
     private Long capacity;

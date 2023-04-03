@@ -43,4 +43,10 @@ public interface ClassTaskService {
      * @return
      */
     Integer classTaskCount();
+
+    /**
+     * 排课
+     * @param classTask
+     */
+    void classScheduling(ClassTask classTask);
 }

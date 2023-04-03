@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
 
+import javax.validation.constraints.NotBlank;
 import java.util.List;
 
 /**
@@ -33,4 +34,19 @@ public interface ClassTaskRepository extends JpaRepository<ClassTask, Long>, Jpa
      */
     @Query(value = "SELECT count(*) FROM cms_class_task", nativeQuery = true)
     Integer classTaskCount();
+
+    /**
+     * 根据学期查询所有的课程列表
+     * @param semester
+     * @return
+     */
+    List<ClassTask> queryAllBySemester(@NotBlank String semester);
+
+    /**
+     * 根据列名查询
+     * @param columnName
+     * @return
+     */
+    @Query(value = "SELECT distinct ?1 from cms_class_task", nativeQuery = true)
+    List<String> selectByColumnName(String columnName);
 }

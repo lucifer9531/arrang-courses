@@ -1,7 +1,7 @@
 package com.lucifer.config;
 
 import lombok.Data;
-import com.lucifer.utils.ElAdminConstant;
+import com.lucifer.utils.ArrangingConstant;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 
@@ -31,9 +31,9 @@ public class FileProperties {
 
     public ElPath getPath() {
         String os = System.getProperty("os.name");
-        if (os.toLowerCase().startsWith(ElAdminConstant.WIN)) {
+        if (os.toLowerCase().startsWith(ArrangingConstant.WIN)) {
             return windows;
-        } else if (os.toLowerCase().startsWith(ElAdminConstant.MAC)) {
+        } else if (os.toLowerCase().startsWith(ArrangingConstant.MAC)) {
             return mac;
         }
         return linux;
