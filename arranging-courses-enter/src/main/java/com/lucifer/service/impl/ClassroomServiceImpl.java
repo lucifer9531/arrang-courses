@@ -3,6 +3,7 @@ package com.lucifer.service.impl;
 import com.lucifer.domain.Classroom;
 import com.lucifer.repository.ClassRoomRepository;
 import com.lucifer.service.ClassroomService;
+import com.lucifer.service.dto.ClassroomDto;
 import com.lucifer.service.dto.ClassroomQueryCriteria;
 import com.lucifer.service.mapstruct.ClassroomMapper;
 import com.lucifer.utils.PageUtil;
@@ -14,6 +15,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -31,6 +33,11 @@ public class ClassroomServiceImpl implements ClassroomService {
     public Object queryAll(ClassroomQueryCriteria criteria, Pageable pageable) {
         Page<Classroom> page = classroomRepository.findAll((root, criteriaQuery, criteriaBuilder) -> QueryHelp.getPredicate(root, criteria, criteriaBuilder), pageable);
         return PageUtil.toPage(page.map(classroomMapper::toDto));
+    }
+
+    @Override
+    public List<ClassroomDto> queryAll() {
+        return classroomMapper.toDto(classroomRepository.findAll());
     }
 
     @Override
